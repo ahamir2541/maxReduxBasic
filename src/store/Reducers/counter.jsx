@@ -1,4 +1,5 @@
 import * as actionTypes from '../actionTypes'
+import { updateObject } from '../utility'
 
 const initailState = {
     counter : 20,
@@ -7,25 +8,13 @@ const initailState = {
 const reducer = (state=initailState, action) => {
     switch(action.type){
         case actionTypes.INCREMENT :
-            return {
-                ...state,
-                counter : state.counter + 1
-            }
+            return updateObject(state, {counter : state.counter + 1})
         case actionTypes.DECREMENT :
-            return {
-                ...state,
-                counter : state.counter - 1
-            }
+            return updateObject(state, {counter : state.counter - 1})
         case actionTypes.ADD :
-            return {
-                ...state,
-                counter : state.counter + action.payload
-            }
+            return updateObject(state, {counter : state.counter + action.payload})
         case actionTypes.SUB :
-            return {
-                ...state,
-                counter : state.counter - action.payload
-            }
+            return updateObject(state, {counter : state.counter - action.payload})
         default :
             return state
     }
